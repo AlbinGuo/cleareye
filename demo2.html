@@ -740,4 +740,746 @@
     });
 
 </script>
+</body></html><!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Cleareye Intelligence | Cybernetic Precision at Scale</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#bbc6e2",
+                        "inverse-on-surface": "#2f312e",
+                        "on-primary-fixed": "#00201a",
+                        "surface-tint": "#00dfc1",
+                        "inverse-primary": "#006b5b",
+                        "surface-container-highest": "#333533",
+                        "secondary-container": "#00b2d6",
+                        "on-secondary-fixed-variant": "#004e5f",
+                        "surface-dim": "#111412",
+                        "primary-container": "#00f5d4",
+                        "primary": "#d7fff3",
+                        "on-error": "#690005",
+                        "inverse-surface": "#e2e3df",
+                        "on-tertiary-container": "#545f77",
+                        "surface-container-lowest": "#0c0f0d",
+                        "surface-variant": "#333533",
+                        "tertiary-fixed": "#d7e2ff",
+                        "on-primary-fixed-variant": "#005144",
+                        "on-secondary": "#003642",
+                        "on-surface": "#e2e3df",
+                        "surface-container-low": "#1a1c1a",
+                        "outline": "#83948f",
+                        "secondary-fixed": "#b3ebff",
+                        "on-surface-variant": "#b9cac4",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed-dim": "#00dfc1",
+                        "error": "#ffb4ab",
+                        "tertiary": "#f5f6ff",
+                        "surface-container-high": "#282b28",
+                        "secondary-fixed-dim": "#4cd6fb",
+                        "on-primary-container": "#006c5c",
+                        "on-tertiary-fixed": "#101b30",
+                        "surface": "#111412",
+                        "surface-container": "#1e201e",
+                        "error-container": "#93000a",
+                        "on-background": "#e2e3df",
+                        "on-tertiary": "#263046",
+                        "outline-variant": "#3a4a46",
+                        "on-secondary-fixed": "#001f27",
+                        "background": "#111412",
+                        "tertiary-container": "#cfdaf6",
+                        "on-primary": "#00382f",
+                        "surface-bright": "#373a37",
+                        "primary-fixed": "#26fedc",
+                        "secondary": "#4cd6fb",
+                        "on-tertiary-fixed-variant": "#3c475d",
+                        "on-secondary-container": "#003f4e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-padding-desktop": "64px",
+                        "gutter": "24px",
+                        "container-padding-mobile": "24px",
+                        "base": "8px",
+                        "section-gap": "120px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "display-xl": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #111412;
+            color: #e2e3df;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 245, 212, 0.3);
+            box-shadow: 0 0 30px rgba(0, 245, 212, 0.05);
+        }
+
+        .max-w-7xl {
+            max-width: 120rem;
+        }
+
+        .hero-glow {
+            background: radial-gradient(circle at 50% 50%, rgba(0, 245, 212, 0.15) 0%, transparent 60%);
+        }
+
+        .stagger-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        /* Image Modal */
+        .image-modal {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .image-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .image-modal-content {
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .image-modal.active .image-modal-content {
+            transform: scale(1);
+        }
+
+        .stagger-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-glow {
+            box-shadow: 0 0 20px rgba(0, 245, 212, 0.4);
+        }
+    </style>
+</head>
+<body class="font-body-lg text-body-lg">
+<!-- Background Shader -->
+<div class="fixed inset-0 -z-10 opacity-30">
+
+</div>
+<!-- Navigation Shell -->
+<header class="fixed top-0 w-full bg-surface/80 backdrop-blur-xl border-b border-outline-variant/15 shadow-sm z-50 flex justify-between items-center px-container-padding-desktop py-4 max-w-full mx-auto">
+    <div class="flex items-center gap-3">
+        <img src="./logo.png" alt="Cleareye Logo" class="w-[50px] h-[50px] object-contain"/>
+        <span style="color: #26fedc; font-size: 30px; font-weight: bold;">Cleareye</span>
+    </div>
+<!--    <nav class="hidden md:flex gap-8">-->
+<!--        <a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-lg text-body-lg" href="#" data-i18n="nav.platform">Platform</a>-->
+<!--        <a class="text-on-surface-variant font-medium font-body-lg text-body-lg hover:text-primary transition-colors duration-300" href="#" data-i18n="nav.solutions">Solutions</a>-->
+<!--        <a class="text-on-surface-variant font-medium font-body-lg text-body-lg hover:text-primary transition-colors duration-300" href="#" data-i18n="nav.resources">Resources</a>-->
+<!--        <a class="text-on-surface-variant font-medium font-body-lg text-body-lg hover:text-primary transition-colors duration-300" href="#" data-i18n="nav.pricing">Pricing</a>-->
+<!--    </nav>-->
+<!--    <div class="flex items-center gap-4">-->
+        <button id="langSwitch" class="w-9 h-9 rounded-full border border-primary/30 text-primary font-bold text-sm hover:bg-primary/10 transition-all flex items-center justify-center">EN</button>
+<!--        <button class="text-on-surface-variant font-medium hover:text-primary cursor-pointer active:scale-95 transition-all" data-i18n="nav.login">Log In</button>-->
+<!--        <button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-bold hover:brightness-110 active:scale-95 transition-all" data-i18n="nav.demo">Request Demo</button>-->
+<!--    </div>-->
+</header>
+<main class="relative">
+    <!-- Hero Section -->
+    <section class="min-h-screen pt-32 pb-section-gap px-container-padding-desktop flex flex-col items-center justify-center relative overflow-hidden">
+        <div class="hero-glow absolute inset-0 -z-10"></div>
+        <div class="relative text-center max-w-4xl z-10 mb-16 mt-24" style="margin-top:1rem!important;">
+            <div class="absolute -inset-8 bg-gradient-to-b from-surface/80 via-surface/40 to-transparent backdrop-blur-xl rounded-[3rem] -z-10"></div>
+<!--            <span class="inline-block font-label-md text-label-md text-secondary-fixed-dim bg-secondary-container/10 px-4 py-1 border-l-2 border-secondary mb-6" data-i18n="hero.tag">NEXT-GEN ANALYTICS ENGINE</span>-->
+            <h1 class="font-display-xl text-display-xl text-primary mb-8 stagger-reveal" style="color: #26fedc;" data-i18n="hero.title">Intelligence Redefined</h1>
+<!--            <p class="text-on-surface-variant max-w-2xl mx-auto mb-10 stagger-reveal" data-i18n="hero.desc">-->
+<!--                Experience enterprise-grade RAG and persona analytics powered by cybernetic precision. Deep-dive into unstructured data with Cleareye' neural knowledge retrieval.-->
+<!--            </p>-->
+<!--            <div class="flex justify-center gap-6 stagger-reveal">-->
+<!--                <button class="bg-primary-container text-on-primary-container px-8 py-4 rounded-lg font-bold text-lg cta-glow hover:brightness-110 transition-all flex items-center gap-2">-->
+<!--                    <span data-i18n="hero.getStarted">Get Started</span> <span class="material-symbols-outlined">arrow_forward</span>-->
+<!--                </button>-->
+<!--                <button class="border border-outline-variant text-primary px-8 py-4 rounded-lg font-bold text-lg hover:bg-surface-variant transition-all" data-i18n="hero.viewEcosystem">-->
+<!--                    View Ecosystem-->
+<!--                </button>-->
+<!--            </div>-->
+        </div>
+        <!-- Screenshot Grid -->
+        <div class="w-[120rem] mx-auto stagger-reveal mt-16">
+            <div class="grid grid-cols-[30%_70%] gap-6">
+                <!-- Left: 01.png (tall) -->
+                <div class="rounded-2xl overflow-hidden cursor-pointer">
+                    <img alt="Neural Conversation interface" class=" h-full object-top rounded-[10px]" src="./01.png"/>
+                </div>
+                <!-- Right: 02.png and 03.png (stacked) -->
+                <div class="relative h-[700px] perspective-[2000px]">
+                    <div class="absolute inset-0 stacked-card transition-all duration-500 ease-out cursor-pointer" style="z-index: 1; transform: translateX(-60px) translateY(-40px) rotate(-2deg) scale(0.9);">
+                        <img alt="Knowledge Vault dashboard" class=" h-full rounded-[10px]" src="./03.png"/>
+                    </div>
+                    <div class="absolute inset-0 stacked-card transition-all duration-500 ease-out cursor-pointer" style="z-index: 2; transform: translateX(100px) translateY(82px) rotate(1deg) scale(1);">
+                        <img alt="User Persona analytics" class=" h-full rounded-[10px]" src="./02.png"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Product Advantages Section -->
+    <section class="px-container-padding-desktop py-section-gap relative">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-20 stagger-reveal">
+<!--                <span class="inline-block font-label-md text-label-md text-secondary-fixed-dim bg-secondary-container/10 px-4 py-1 border-l-2 border-secondary mb-6" data-i18n="advantages.tag">PRODUCT ADVANTAGES</span>-->
+                <h2 class="font-headline-lg text-headline-lg text-primary mb-4" style="color: rgb(38, 254, 220);" data-i18n="advantages.title">为什么选择 Cleareye</h2>
+                <p class="text-on-surface-variant max-w-2xl mx-auto" data-i18n="advantages.subtitle">基于视觉语言模型的智能自动化解决方案，重新定义桌面 RPA 体验</p>
+            </div>
+
+
+            <!-- Supported Apps -->
+            <div class="glass-card p-8 rounded-2xl mb-16 stagger-reveal">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-secondary-container/20 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-secondary text-3xl">devices</span>
+                    </div>
+                    <h3 class="font-headline-lg text-2xl text-primary" data-i18n="advantages.apps.title">支持应用</h3>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 bg-surface-container-high rounded-lg text-on-surface-variant text-sm">微信</span>
+                    <span class="px-4 py-2 bg-surface-container-high rounded-lg text-on-surface-variant text-sm">企业微信</span>
+                    <span class="px-4 py-2 bg-surface-container-high rounded-lg text-on-surface-variant text-sm">钉钉</span>
+                    <span class="px-4 py-2 bg-surface-container-high rounded-lg text-on-surface-variant text-sm">飞书</span>
+                    <span class="px-4 py-2 bg-surface-container-high rounded-lg text-on-surface-variant text-sm">Slack</span>
+                    <span class="px-4 py-2 bg-surface-container-high rounded-lg text-on-surface-variant text-sm">Telegram</span>
+                    <span class="px-4 py-2 bg-surface-container-high rounded-lg text-on-surface-variant text-sm" data-i18n="advantages.apps.other">其他桌面应用</span>
+                </div>
+            </div>
+
+            <!-- Core Positioning -->
+            <div class="glass-card p-8 rounded-2xl mb-16 stagger-reveal">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary text-3xl">precision_manufacturing</span>
+                    </div>
+                    <h3 class="font-headline-lg text-2xl text-primary" data-i18n="advantages.positioning.title">核心定位</h3>
+                </div>
+                <p class="text-on-surface-variant text-lg" data-i18n="advantages.positioning.desc">AI 驱动的跨平台桌面 RPA 客户端 —— 基于视觉语言模型（VLM）的智能聊天自动回复工具</p>
+            </div>
+
+            <!-- Core Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                <!-- Feature 1 -->
+                <div class="glass-card p-6 rounded-2xl stagger-reveal group hover:border-primary/30 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-primary text-2xl">visibility</span>
+                    </div>
+                    <h4 class="font-headline-lg text-xl text-primary mb-2" data-i18n="advantages.features.vision.title">纯视觉 RPA 驱动</h4>
+                    <p class="text-on-surface-variant text-sm" data-i18n="advantages.features.vision.desc">基于 VLM 自动识别屏幕 UI 控件，无需传统 OCR，直接"看屏幕"理解界面</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="glass-card p-6 rounded-2xl stagger-reveal group hover:border-primary/30 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-secondary-container/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-secondary text-2xl">chat</span>
+                    </div>
+                    <h4 class="font-headline-lg text-xl text-primary mb-2" data-i18n="advantages.features.chat.title">智能对话能力</h4>
+                    <p class="text-on-surface-variant text-sm" data-i18n="advantages.features.chat.desc">AI 分析聊天截图，自动生成自然回复，防自我循环机制避免无限循环</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass-card p-6 rounded-2xl stagger-reveal group hover:border-primary/30 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-primary-fixed-dim/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-primary-fixed-dim text-2xl">extension</span>
+                    </div>
+                    <h4 class="font-headline-lg text-xl text-primary mb-2" data-i18n="advantages.features.plugin.title">Provider 插件化架构</h4>
+                    <p class="text-on-surface-variant text-sm" data-i18n="advantages.features.plugin.desc">聊天能力抽象为独立 Provider，支持第三方接入，本地缓存支持离线使用</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="glass-card p-6 rounded-2xl stagger-reveal group hover:border-primary/30 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-primary text-2xl">school</span>
+                    </div>
+                    <h4 class="font-headline-lg text-xl text-primary mb-2" data-i18n="advantages.features.rag.title">知识库增强（RAG）</h4>
+                    <p class="text-on-surface-variant text-sm" data-i18n="advantages.features.rag.desc">支持导入 PDF、Word、TXT 等文档，自动分块向量化，语义搜索增强回复</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="glass-card p-6 rounded-2xl stagger-reveal group hover:border-primary/30 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-secondary-container/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-secondary text-2xl">person</span>
+                    </div>
+                    <h4 class="font-headline-lg text-xl text-primary mb-2" data-i18n="advantages.features.profile.title">用户画像系统</h4>
+                    <p class="text-on-surface-variant text-sm" data-i18n="advantages.features.profile.desc">记录对话历史，AI 自动提取话题标签，按联系人管理用户信息</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="glass-card p-6 rounded-2xl stagger-reveal group hover:border-primary/30 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-primary-fixed-dim/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-primary-fixed-dim text-2xl">security</span>
+                    </div>
+                    <h4 class="font-headline-lg text-xl text-primary mb-2" data-i18n="advantages.features.privacy.title">隐私本地化</h4>
+                    <p class="text-on-surface-variant text-sm" data-i18n="advantages.features.privacy.desc">数据存储在本地，支持离线使用，保障企业数据安全</p>
+                </div>
+            </div>
+
+
+
+            <!-- Use Cases -->
+            <div class="mb-16 stagger-reveal">
+                <h3 class="font-headline-lg text-2xl text-primary mb-8 text-center" data-i18n="advantages.useCases.title">应用场景</h3>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    <div class="glass-card p-4 rounded-xl text-center hover:border-primary/30 transition-all">
+                        <span class="material-symbols-outlined text-primary text-3xl mb-2">headset_mic</span>
+                        <p class="text-on-surface-variant text-sm" data-i18n="advantages.useCases.customerService">客服自动化</p>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl text-center hover:border-primary/30 transition-all">
+                        <span class="material-symbols-outlined text-secondary text-3xl mb-2">group_add</span>
+                        <p class="text-on-surface-variant text-sm" data-i18n="advantages.useCases.community">社群运营</p>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl text-center hover:border-primary/30 transition-all">
+                        <span class="material-symbols-outlined text-primary-fixed-dim text-3xl mb-2">trending_up</span>
+                        <p class="text-on-surface-variant text-sm" data-i18n="advantages.useCases.sales">销售跟进</p>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl text-center hover:border-primary/30 transition-all">
+                        <span class="material-symbols-outlined text-primary text-3xl mb-2">handshake</span>
+                        <p class="text-on-surface-variant text-sm" data-i18n="advantages.useCases.collaboration">内部协作</p>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl text-center hover:border-primary/30 transition-all">
+                        <span class="material-symbols-outlined text-secondary text-3xl mb-2">speed</span>
+                        <p class="text-on-surface-variant text-sm" data-i18n="advantages.useCases.efficiency">个人效率</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layout Modes -->
+            <div class="glass-card p-8 rounded-2xl stagger-reveal">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary text-3xl">aspect_ratio</span>
+                    </div>
+                    <h3 class="font-headline-lg text-2xl text-primary" data-i18n="advantages.modes.title">双模式布局测量</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-4 bg-surface-container-high rounded-xl">
+                        <h4 class="text-primary font-bold mb-2" data-i18n="advantages.modes.vlm.title">VLM 模式</h4>
+                        <p class="text-on-surface-variant text-sm" data-i18n="advantages.modes.vlm.desc">自动识别窗口区域，适用于微信、企业微信</p>
+                    </div>
+                    <div class="p-4 bg-surface-container-high rounded-xl">
+                        <h4 class="text-secondary font-bold mb-2" data-i18n="advantages.modes.manual.title">框选模式</h4>
+                        <p class="text-on-surface-variant text-sm" data-i18n="advantages.modes.manual.desc">用户手动圈选关键区域，适用于其他应用</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant/10 w-full">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-gutter px-container-padding-desktop py-section-gap max-w-7xl mx-auto">
+        <div class="col-span-2 md:col-span-1">
+            <div class="font-headline-lg text-headline-lg text-primary mb-6" data-i18n="footer.brand">Cleareye</div>
+            <p class="text-on-surface-variant text-label-md" data-i18n="footer.copyright">© 2024 Cleareye Intelligence. Cybernetic Precision at Scale.</p>
+        </div>
+<!--        <div class="flex flex-col gap-4">-->
+<!--            <span class="font-bold text-primary mb-2" data-i18n="footer.product">Product</span>-->
+<!--            <a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary-fixed-dim underline transition-all" href="#" data-i18n="nav.platform">Product</a>-->
+<!--            <a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary-fixed-dim underline transition-all" href="#" data-i18n="features.knowledgeVault">Capabilities</a>-->
+<!--            <a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary-fixed-dim underline transition-all" href="#">Security</a>-->
+<!--            <a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary-fixed-dim underline transition-all" href="#">API Docs</a>-->
+<!--        </div>-->
+<!--        <div class="flex flex-col gap-4">-->
+<!--            <span class="font-bold text-primary mb-2" data-i18n="footer.company">Company</span>-->
+<!--            <a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary-fixed-dim underline transition-all" href="#" data-i18n="footer.about">About</a>-->
+<!--            <a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary-fixed-dim underline transition-all" href="#" data-i18n="footer.careers">Careers</a>-->
+<!--            <a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary-fixed-dim underline transition-all" href="#" data-i18n="footer.press">Press</a>-->
+<!--            <a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary-fixed-dim underline transition-all" href="#" data-i18n="footer.contact">Contact</a>-->
+<!--        </div>-->
+<!--        <div class="flex flex-col gap-4">-->
+<!--            <span class="font-bold text-primary mb-2" data-i18n="footer.support">Support</span>-->
+<!--            <a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary-fixed-dim underline transition-all" href="#" data-i18n="footer.helpCenter">Help Center</a>-->
+<!--            <a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary-fixed-dim underline transition-all" href="#" data-i18n="footer.status">Status</a>-->
+<!--        </div>-->
+    </div>
+</footer>
+<!-- Image Modal -->
+<div id="imageModal" class="image-modal fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm p-8">
+    <div class="image-modal-content relative max-w-[90vw] max-h-[90vh]">
+        <img id="modalImg" src="" alt="Preview" class="max-w-full max-h-[85vh] rounded-xl shadow-2xl"/>
+        <button class="absolute -top-4 -right-4 w-10 h-10 bg-surface-container rounded-full flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors" onclick="document.getElementById('imageModal').classList.remove('active')">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+    </div>
+</div>
+<script>
+    // Translations
+    const translations = {
+        en: {
+            nav: {
+                platform: 'Platform',
+                solutions: 'Solutions',
+                resources: 'Resources',
+                pricing: 'Pricing',
+                login: 'Log In',
+                demo: 'Request Demo'
+            },
+            hero: {
+                tag: 'NEXT-GEN ANALYTICS ENGINE',
+                title: 'Intelligence Redefined',
+                desc: 'Experience enterprise-grade RAG and persona analytics powered by cybernetic precision. Deep-dive into unstructured data with Cleareye\' neural knowledge retrieval.',
+                getStarted: 'Get Started',
+                viewEcosystem: 'View Ecosystem'
+            },
+            features: {
+                title: 'Core Infrastructure',
+                subtitle: 'Built for precision, scale, and uncompromising reliability.',
+                knowledgeVault: 'Knowledge Vault',
+                knowledgeVaultDesc: 'Our high-performance RAG pipeline processes unstructured data into actionable intelligence with near-zero latency.',
+                autoSlicing: 'AUTO-SLICING',
+                vectorSync: 'VECTOR SYNC',
+                neuralFlow: 'Neural Flow',
+                neuralFlowDesc: 'Real-time thought processing',
+                personaInsights: 'Persona Insights',
+                personaInsightsDesc: 'Deep behavioral mapping for every user interaction.',
+                activePersonas: 'Active Personas: 1,240',
+                accuracy: 'Accuracy: 99.8%',
+                autonomousExecution: 'Autonomous Execution',
+                autonomousExecutionDesc: 'Cleareye identifies triggers and executes workflows automatically across your entire communication stack.',
+                explore: 'Explore Capabilities'
+            },
+            cta: {
+                title: 'Deploy Precision.',
+                desc: 'Join leading enterprises integrating Cleareye Intelligence into their core workflows. Start your trial today and witness the evolution of AI.',
+                launch: 'Launch Dashboard',
+                talk: 'Talk to an Architect'
+            },
+            advantages: {
+                tag: 'PRODUCT ADVANTAGES',
+                title: 'Why Choose Cleareye',
+                subtitle: 'Intelligent automation solution based on vision language models, redefining desktop RPA experience',
+                positioning: {
+                    title: 'Core Positioning',
+                    desc: 'AI-driven cross-platform desktop RPA client - intelligent chat auto-reply tool based on Vision Language Model (VLM)'
+                },
+                features: {
+                    vision: {
+                        title: 'Pure Visual RPA',
+                        desc: 'Auto-recognize screen UI controls via VLM, no traditional OCR needed, directly "see the screen" to understand interfaces'
+                    },
+                    chat: {
+                        title: 'Smart Conversation',
+                        desc: 'AI analyzes chat screenshots, auto-generates natural replies, anti-loop mechanism prevents infinite cycles'
+                    },
+                    plugin: {
+                        title: 'Provider Plugin Architecture',
+                        desc: 'Chat capabilities abstracted as independent Providers, supports third-party integration, local cache for offline use'
+                    },
+                    rag: {
+                        title: 'Knowledge Base Enhancement (RAG)',
+                        desc: 'Import PDF, Word, TXT documents, auto-chunk and vectorize, semantic search enhances replies'
+                    },
+                    profile: {
+                        title: 'User Profile System',
+                        desc: 'Record conversation history, AI auto-extracts topic tags, manage user info by contact'
+                    },
+                    privacy: {
+                        title: 'Privacy Localization',
+                        desc: 'Data stored locally, supports offline use, ensures enterprise data security'
+                    }
+                },
+                apps: {
+                    title: 'Supported Applications',
+                    other: 'Other Desktop Apps'
+                },
+                useCases: {
+                    title: 'Use Cases',
+                    customerService: 'Customer Service',
+                    community: 'Community',
+                    sales: 'Sales',
+                    collaboration: 'Collaboration',
+                    efficiency: 'Efficiency'
+                },
+                modes: {
+                    title: 'Dual Layout Measurement',
+                    vlm: {
+                        title: 'VLM Mode',
+                        desc: 'Auto-recognize window areas, suitable for WeChat, Enterprise WeChat'
+                    },
+                    manual: {
+                        title: 'Manual Selection Mode',
+                        desc: 'User manually select key areas, suitable for other applications'
+                    }
+                }
+            },
+            footer: {
+                brand: 'Cleareye',
+                copyright: '© 2024 Cleareye Intelligence. Cybernetic Precision at Scale.',
+                product: 'Product',
+                company: 'Company',
+                support: 'Support',
+                about: 'About',
+                careers: 'Careers',
+                press: 'Press',
+                contact: 'Contact',
+                helpCenter: 'Help Center',
+                status: 'Status'
+            },
+            langSwitch: '中'
+        },
+        zh: {
+            nav: {
+                platform: '平台',
+                solutions: '解决方案',
+                resources: '资源',
+                pricing: '定价',
+                login: '登录',
+                demo: '申请演示'
+            },
+            hero: {
+                tag: '下一代分析引擎',
+                title: 'Cleareye，重塑智能办公效率',
+                desc: '体验由网络精密度驱动的企业级RAG与用户画像分析。通过Cleareye神经知识检索，深度挖掘非结构化数据。',
+                getStarted: '立即开始',
+                viewEcosystem: '查看生态系统'
+            },
+            features: {
+                title: '核心基础设施',
+                subtitle: '为精准、规模和无与伦比的可靠性而构建。',
+                knowledgeVault: '知识库',
+                knowledgeVaultDesc: '我们的高性能RAG管道以接近零的延迟处理非结构化数据，转化为可操作的智能。',
+                autoSlicing: '自动切片',
+                vectorSync: '向量同步',
+                neuralFlow: '神经流',
+                neuralFlowDesc: '实时思维处理',
+                personaInsights: '用户画像洞察',
+                personaInsightsDesc: '深度行为映射，洞察每一次用户交互。',
+                activePersonas: '活跃画像: 1,240',
+                accuracy: '准确率: 99.8%',
+                autonomousExecution: '自主执行',
+                autonomousExecutionDesc: 'Cleareye识别触发器，自动执行整个通信栈的工作流程。',
+                explore: '探索功能'
+            },
+            cta: {
+                title: '部署精准。',
+                desc: '加入将Cleareye Intelligence融入核心工作流程的领先企业。立即开始试用，见证AI的进化。',
+                launch: '启动控制台',
+                talk: '联系架构师'
+            },
+            advantages: {
+                tag: '产品优势',
+                title: '为什么选择 Cleareye',
+                subtitle: '基于视觉语言模型的智能自动化解决方案，重新定义桌面 RPA 体验',
+                positioning: {
+                    title: '核心定位',
+                    desc: 'AI 驱动的跨平台桌面 RPA 客户端 —— 基于视觉语言模型（VLM）的智能聊天自动回复工具'
+                },
+                features: {
+                    vision: {
+                        title: '纯视觉 RPA 驱动',
+                        desc: '基于 VLM 自动识别屏幕 UI 控件，无需传统 OCR，直接"看屏幕"理解界面'
+                    },
+                    chat: {
+                        title: '智能对话能力',
+                        desc: 'AI 分析聊天截图，自动生成自然回复，防自我循环机制避免无限循环'
+                    },
+                    plugin: {
+                        title: 'Provider 插件化架构',
+                        desc: '聊天能力抽象为独立 Provider，支持第三方接入，本地缓存支持离线使用'
+                    },
+                    rag: {
+                        title: '知识库增强（RAG）',
+                        desc: '支持导入 PDF、Word、TXT 等文档，自动分块向量化，语义搜索增强回复'
+                    },
+                    profile: {
+                        title: '用户画像系统',
+                        desc: '记录对话历史，AI 自动提取话题标签，按联系人管理用户信息'
+                    },
+                    privacy: {
+                        title: '隐私本地化',
+                        desc: '数据存储在本地，支持离线使用，保障企业数据安全'
+                    }
+                },
+                apps: {
+                    title: '支持应用',
+                    other: '其他桌面应用'
+                },
+                useCases: {
+                    title: '应用场景',
+                    customerService: '客服自动化',
+                    community: '社群运营',
+                    sales: '销售跟进',
+                    collaboration: '内部协作',
+                    efficiency: '个人效率'
+                },
+                modes: {
+                    title: '双模式布局测量',
+                    vlm: {
+                        title: 'VLM 模式',
+                        desc: '自动识别窗口区域，适用于微信、企业微信'
+                    },
+                    manual: {
+                        title: '框选模式',
+                        desc: '用户手动圈选关键区域，适用于其他应用'
+                    }
+                }
+            },
+            footer: {
+                brand: 'Cleareye',
+                copyright: '© 2024 Cleareye Intelligence. 规模化的网络精准。',
+                product: '产品',
+                company: '公司',
+                support: '支持',
+                about: '关于',
+                careers: '职业',
+                press: '新闻',
+                contact: '联系',
+                helpCenter: '帮助中心',
+                status: '状态'
+            },
+            langSwitch: 'EN'
+        }
+    };
+
+    let currentLang = localStorage.getItem('lang') || 'en';
+
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.stagger-reveal').forEach((el, i) => {
+        el.style.transitionDelay = `${i * 0.1}s`;
+        observer.observe(el);
+    });
+
+    // Stacked card hover effect
+    const stackedCards = document.querySelectorAll('.stacked-card');
+    const defaultTransforms = [
+        'translateX(-60px) translateY(-40px) rotate(-2deg) scale(0.9)',
+        'translateX(162px) translateY(82px) rotate(1deg) scale(1)'
+    ];
+    
+    stackedCards.forEach((card, index) => {
+        card.addEventListener('mouseenter', () => {
+            stackedCards.forEach((c, i) => {
+                if (c === card) {
+                    c.style.zIndex = '10';
+                    c.style.transform = 'translateX(0) translateY(0) rotate(0deg) scale(1)';
+<!--                    c.style.filter = 'brightness(1)';-->
+                } else {
+                    c.style.zIndex = '1';
+                    c.style.transform = 'translateX(-80px) translateY(-60px) rotate(-3deg) scale(0.9)';
+<!--                    c.style.filter = 'brightness(0.5)';-->
+                }
+            });
+        });
+        card.addEventListener('mouseleave', () => {
+            stackedCards.forEach((c, i) => {
+                c.style.zIndex = (i === 1) ? '2' : '1';
+                c.style.transform = defaultTransforms[i];
+                c.style.filter = '';
+            });
+        });
+    });
+
+    // Image modal
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+    
+    document.querySelectorAll('.stacked-card img, .grid img').forEach(img => {
+        img.addEventListener('click', () => {
+            modalImg.src = img.src;
+            modal.classList.add('active');
+        });
+    });
+    
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+        }
+    });
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            modal.classList.remove('active');
+        }
+    });
+
+    // Language switching
+    function setLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem('lang', lang);
+        
+        // Update all elements with data-i18n
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const keys = el.getAttribute('data-i18n').split('.');
+            let value = translations[lang];
+            keys.forEach(key => {
+                value = value[key];
+            });
+            if (value) {
+                el.textContent = value;
+            }
+        });
+        
+        // Update lang switch button
+        const langBtn = document.getElementById('langSwitch');
+        if (langBtn) {
+            langBtn.textContent = translations[lang].langSwitch;
+        }
+        
+        // Update html lang attribute
+        document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+    }
+
+    // Initialize language
+    document.addEventListener('DOMContentLoaded', () => {
+        setLanguage(currentLang);
+        
+        // Add click handler for language switch button
+        const langBtn = document.getElementById('langSwitch');
+        if (langBtn) {
+            langBtn.addEventListener('click', () => {
+                const newLang = currentLang === 'en' ? 'zh' : 'en';
+                setLanguage(newLang);
+            });
+        }
+    });
+
+</script>
 </body></html>
